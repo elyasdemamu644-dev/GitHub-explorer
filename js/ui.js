@@ -172,6 +172,54 @@ export function displayRepositories(repositories) {
 ///
 ////
 
+function createRepositoryHTML(repository) {
+
+    const description = repository.description ?? "No description provided.";
+
+    const language = repository.language ?? "Not specified";
+
+    return `
+        <article class="repository-card">
+
+            <h3>
+                <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">
+                    ${repository.name}
+                </a>
+            </h3>
+
+            <p>
+                ${description}
+            </p>
+
+            <div class="repository-meta">
+
+                <span>
+                    ⭐ ${repository.stargazers_count ?? 0}
+                </span>
+
+                <span>
+                    🍴 ${repository.forks_count ?? 0}
+                </span>
+
+                <span>
+                    💻 ${language}
+                </span>
+
+                <span>
+                    ${repository.fork ? "Fork" : "Original"}
+                </span>
+
+                <span>
+                    Updated:
+                    ${formatDate(repository.updated_at)}
+                </span>
+
+            </div>
+
+        </article>
+    `;
+}
+
 export function populateLanguageFilter(languages) {
 
     const select = document.getElementById("languageFilter");
