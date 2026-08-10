@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header>
+            <h1>GitHub Explorer</h1>
+            <p>Search for GitHub users and explore their public repositories.</p>
+        </header>
+
+        <section class="search-panel">
+            <form id="searchForm">
+                <label for="username">GitHub username</label>
+                <input id="username" name="username" type="text" placeholder="octocat" required>
+                <button type="submit">Search</button>
+            </form>
+
+            <div id="loading" class="hidden">Loading...</div>
+            <div id="error" class="hidden" role="alert"></div>
+        </section>
+
+        <section id="results" class="hidden">
+            <section class="profile-card">
+                <img id="avatar" alt="Developer avatar" src="">
+                <div class="profile-info">
+                    <h2 id="developerName"></h2>
+                    <p id="developerUsername"></p>
+                    <p id="bio"></p>
+                    <p><strong>Company:</strong> <span id="company"></span></p>
+                    <p><strong>Location:</strong> <span id="location"></span></p>
+                    <p><strong>Followers:</strong> <span id="followers"></span></p>
+                    <p><strong>Following:</strong> <span id="following"></span></p>
+                    <p><strong>Public repos:</strong> <span id="publicRepos"></span></p>
+                    <p><strong>Member since:</strong> <span id="memberSince"></span></p>
+                    <p><strong>Account age:</strong> <span id="accountAge"></span></p>
+                    <p><a id="githubProfileLink" href="" target="_blank" rel="noopener noreferrer">View GitHub profile</a></p>
+                </div>
+            </section>
+
+            <section class="statistics-panel">
+                <h3>Statistics</h3>
+                <p><strong>Repositories:</strong> <span id="repoCount"></span></p>
+                <p><strong>Total stars:</strong> <span id="totalStars"></span></p>
+                <p><strong>Total forks:</strong> <span id="totalForks"></span></p>
+                <p><strong>Most used language:</strong> <span id="mostUsedLanguage"></span></p>
+                <p><strong>Languages:</strong> <span id="languagesList"></span></p>
+                <p><strong>Has starred repositories:</strong> <span id="hasStarredRepos"></span></p>
+            </section>
+
+            <section class="most-starred-panel">
+                <h3>Most starred repository</h3>
+                <div id="mostStarred"></div>
+            </section>
+
+            <section class="filters-panel">
+                <label for="languageFilter">Language</label>
+                <select id="languageFilter"></select>
+
+                <label for="repositoryFilter">Repository filter</label>
+                <select id="repositoryFilter">
+                    <option value="all">All repositories</option>
+                    <option value="starred">Only starred repos</option>
+                    <option value="notFork">Only originals</option>
+                </select>
+
+                <label for="sortRepositories">Sort by</label>
+                <select id="sortRepositories">
+                    <option value="updated">Recently updated</option>
+                    <option value="stars">Most stars</option>
+                    <option value="name">Name</option>
+                </select>
+            </section>
+
+            <section class="top-repositories">
+                <h3>Top repositories</h3>
+                <div id="topRepositories"></div>
+            </section>
+
+            <section class="repository-list">
+                <h3>All repositories</h3>
+                <div id="repositoryResults"></div>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
